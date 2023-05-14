@@ -1,0 +1,86 @@
+/*import express, { Request, response, Response } from "express";
+import appDataSource from "./ormconfig"
+import Post from "./entities/post";
+import User from "./entities/user";
+import { request } from "http";
+
+
+
+(async() => {
+    try {
+        await appDataSource.initialize() //db connection
+
+        const app = express()
+
+        app.use(express.json()) //use send and get .json format
+
+        app.listen(3000, () => {
+        console.log('listening...')
+
+        app.post('/addPost', async (req: Request, res: Response) => {
+             
+            try {
+                let newPost = new Post()
+                newPost.caption = req.body.caption  
+                newPost.imgurl = req.body.imgurl
+                //await appDataSource.manager.save(newPost)
+                let postRepo = appDataSource.getRepository(Post)
+                await postRepo.save(newPost)
+                res.json({ msg: "post added" })
+            } catch (err) {
+                console.log(err)
+                res.json({ msg: "could not add post" })
+            }
+
+        })
+
+        app.get('/allPosts', async(req: Request, res: Response) => {
+            try {
+                let postRepo = appDataSource.getTreeRepository(Post)
+                let posts = await postRepo.find()
+                res.json({ posts })
+            } catch(err) {
+                console.log(err)
+                res.json({ msg: "could not fetch posts"})
+            }
+        })
+
+        app.delete('/delPost', (req: Request, res: Response) => {
+            
+        })
+
+        app.post('/addUser', async(req:Request, res:Response) => {
+            try {
+                let newUser = new User()
+                newUser.username = req.body.username;
+                newUser.password = req.body.password;
+                let UserRepo = appDataSource.getRepository(User)
+                await UserRepo.save(newUser)
+                res.json({msg: "succes add"})
+            } catch (err) {
+                res.json({msg: "could not add user"})
+            }
+
+
+        })
+
+        app.get('/allUsers', async(req: Request, res: Response) => {
+            try {
+                let userRepo = appDataSource.getTreeRepository(User)
+                let users = await userRepo.find()
+                res.json({ users })
+            } catch(err) {
+                console.log(err)
+                res.json({ msg: "could not fetch users"})
+            }
+        })
+    })
+    } catch(err) {
+        console.log(err)
+    }
+        
+
+    
+})()
+
+*/
